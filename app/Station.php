@@ -6,8 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Station extends Model
 {
-    protected $hidden = ['created_at', 'updated_at', 'pivot', 'type_id'];
+    /**
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'pivot',
+        'type_id'
+    ];
 
+    /**
+     * Retrieve all products coupled to this station
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function products()
     {
         return $this->belongsToMany('App\Product');

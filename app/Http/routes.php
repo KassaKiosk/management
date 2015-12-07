@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/**
+ * Api Routes
+ */
 Route::group(['prefix' => 'api/v1'], function() {
 
     Route::get('products', 'ProductsController@index');

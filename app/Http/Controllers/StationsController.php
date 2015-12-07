@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class StationsController extends Controller
 {
+    /**
+     * Retrieve all Stations with their products
+     *
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function index()
     {
         return Station::with(['products' => function($q) {

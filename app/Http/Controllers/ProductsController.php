@@ -10,6 +10,11 @@ use App\Http\Controllers\Controller;
 
 class ProductsController extends Controller
 {
+    /**
+     * Retrieve all categories with their products
+     *
+     * @return mixed
+     */
     public function index()
     {
         return Category::with(['products' => function($q) {
