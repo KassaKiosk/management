@@ -30,4 +30,9 @@ class ProductsController extends Controller
             $q->orderBy('sort');
         }])->orderBy('sort')->get();
     }
+
+    public function test()
+    {
+        return 'hello world';
+    }
 }
