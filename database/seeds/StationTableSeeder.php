@@ -1,5 +1,7 @@
 <?php
 
+use App\Product;
+use App\Station;
 use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
@@ -9,13 +11,13 @@ class StationTableSeeder extends Seeder
 {
     public function run()
     {
-        $station = \App\Station::create([
+        $station = Station::create([
             'name' => 'Pizza Oven',
             'color' => 'D4B46A',
             'type_id' => 1,
         ]);
 
-        $product = \App\Product::find(6);
+        $product = Product::find(6);
 
         $station->products()->save($product);
 

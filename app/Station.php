@@ -24,4 +24,14 @@ class Station extends Model
     {
         return $this->belongsToMany('App\Product');
     }
+
+    /**
+     * Get the type fro this station
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function type()
+    {
+        return $this->hasOne('App\Type');
+    }
 }

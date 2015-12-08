@@ -1,5 +1,6 @@
 <?php
 
+use App\Type;
 use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
@@ -9,9 +10,11 @@ class TypeTableSeeder extends Seeder
 {
     public function run()
     {
-        \App\Type::create([
+        Type::create([
             'name' => 'Kitchen',
         ]);
-
+        Type::create([
+            'name'  => 'Friteuse',
+        ]);
     }
 }

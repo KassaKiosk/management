@@ -25,4 +25,6 @@ Route::group(['prefix' => 'api/v1'], function() {
 
     Route::get('stations', 'StationsController@index');
 
+    Route::get('orders', 'OrdersController@index');
+
 });
