@@ -17,7 +17,7 @@ class StationsController extends Controller
      */
     public function index()
     {
-        return Station::with(['products' => function($q) {
+        return  Station::with(['products' => function($q) {
             $q->select('id');
             $q->orderBy('sort');
         }])->get();

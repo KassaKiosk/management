@@ -34,4 +34,22 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Station');
     }
+
+    /**
+     * Retrieve all orders that have this product
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function orders()
+    {
+        return $this->belongsToMany('App\Order');
+    }
+
+    /**
+     * Get the subcategory related to this product
+     */
+    public function subCategory()
+    {
+        //TODO : return the relationship based on the category_sub_id field
+    }
 }

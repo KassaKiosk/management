@@ -1,27 +1,59 @@
-## Laravel PHP Framework
+## Kassakiosk Management ##
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This is the management part of the Kassakiosk application
+This application will provide:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+- The api for the kassakiosk instances: these instances are
+    - The Kiosk
+    - The station
+    - The management panel
+- In this management panel you can
+    - Add new Kiosks
+    - add new stations
+    - see some handy charts :)
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Installation ###
+- Clone this repository
+- Run ```composer install```
+- Run ```npm install```
+- Copy the ```.env.exaple``` file into the ```.env``` file with ```$ cp .env.example .env```
+- Replace placeholder environment variables with your own variables
+- Run ```php artisan key:generate``` to set the application key
+- Run ```php artisan migrate``` to execute all migrations
+- Run ```php artisan db:seed``` to seed the database with test data
 
-## Official Documentation
+## Explanations for certain packages ##
+### How to add a new package ###
+--------------------
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+There is a packages folder in the root directory of this project. If you want to add a new namespace, just create a new folder in this directory with your name (or alias)
+Make sure you place different folders per side-package you maken under your name f.e. If you have an admin package and a blog package and you alias is calie, your folder structure should look like this:
 
-## Contributing
+- calie
+    - admin
+        - src: package files
+    - blog
+        - src: package files
+        
+### Add the package to the composer psr-4 autoloader###
+On development you can just add the package to your psr4 autoloader namespace
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+In the composer.json file add the following line per package:
 
-## Security Vulnerabilities
+```
+"autoload": {
+    ...
+    "psr-4": {
+        "App\\": "app/",
+        "Calie\\Admin\\": "packages/calie/admin/src",
+        "Calie\\Blog\\": "packages/calie/blog/src"
+    }
+    ...
+},
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+After this you can run the following command:
 
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+```
+composer dump-autoload
+```
